@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.pumpkin.min.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <title>Free BTC</title>
+</head>
+
+<body>
+    <button id="myButton" onclick="showArticle()"><strong style="color: #f0f1f3;">FREE BTC</strong></button>
+    <h1 id="topMessage" style="display: none; font-size: 1.25rem; margin: 1rem 0;">Imagine being rick rolled in 2026
+    </h1>
+    <div id="myArticle" style="display: none; position: relative;">
+        <article id="mainArticle" aria-busy="true">&#8203;</article>
+        <p id="statusMessage" aria-live="polite" style="margin-top: 1rem; font-weight: bold;"></p>
+        <div id="videoContainer" style="display: none; position: relative; width: 100%;">
+            <video id="rickrollVideo" style="width: 100%; height: auto;" controls>
+                <source src="assets/rickroll.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</body>
+
+<script>
+    let statusInterval = null;
+    function showArticle() {
+        const messages = [
+            "Please wait...",
+            "We are making something good for you",
+            "Hashing the hash",
+            "Generating your opportunity",
+            "Almost there, stay tuned",
+            "Adding extra magical bytes",
+            "Decrypting your lucky fortune",
+            "Spinning the crypto hamster wheel",
+            "Recalculating the moon-bound parabola",
+            "Deploying 99% chance of jackpot",
+            "Preparing your virtual bitcoin goose"
+        ];
+
+        document.getElementById("myButton").style.display = "none";
+        document.getElementById("myArticle").style.display = "block";
+
+        const statusEl = document.getElementById("statusMessage");
+        let idx = 0;
+
+        const setStatus = () => {
+            statusEl.textContent = messages[idx];
+            idx = (idx + 1) % messages.length;
+        };
+
+        setStatus();
+
+        if (statusInterval) {
+            clearInterval(statusInterval);
+        }
+        statusInterval = setInterval(setStatus, 30000);
+
+        setTimeout(() => {
+            const article = document.getElementById("mainArticle");
+            const statusEl = document.getElementById("statusMessage");
+            const videoContainer = document.getElementById("videoContainer");
+            const video = document.getElementById("rickrollVideo");
+            const overlay = document.getElementById("videoOverlay");
+
+            if (article) article.style.display = "none";
+            if (statusEl) statusEl.style.display = "none";
+            const topMessage = document.getElementById("topMessage");
+            if (topMessage) topMessage.style.display = "block";
+            if (videoContainer) videoContainer.style.display = "block";
+            if (video) {
+                video.play().catch(() => {
+                    console.log("Autoplay blocked; user interaction required to play Rickroll.");
+                });
+            }
+        }, 300000);
+
+    }
+
+</script>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+        user-select: none;
+    }
+
+    #myArticle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: min(80vw, 260px);
+        padding: 0.4rem;
+        box-sizing: border-box;
+    }
+
+    #mainArticle {
+        width: 100%;
+        height: 90px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 0.4rem;
+        box-sizing: border-box;
+        margin: 0;
+        overflow: hidden;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+
+    #statusMessage {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+    }
+</style>
+
+</html>
