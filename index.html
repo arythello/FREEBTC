@@ -7,32 +7,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-
-    <meta name="description" content="Get free Bitcoin! Fast and easy. Click the button to claim your free BTC now!">
-
+    <meta name="description"
+        content="Get free Bitcoin! Fast and easy. Click the button to claim your free BTC now! Don't miss out on this limited-time offer.">
+    <meta name="keywords" content="free bitcoin, free btc, free crypto, bitcoin, crypto, crypto wallet">
+    <meta property="og:title" content="Free BTC - Claim Your Free Bitcoin Now!">
+    <meta property="og:description"
+        content="Get free Bitcoin! Fast and easy. Click the button to claim your free BTC now! Don't miss out on this limited-time offer.">
+    <meta property="og:image" content="https://www.freebtc.one/assets/favicon.ico">
+    <meta property="og:url" content="https://www.freebtc.one">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <title>Free BTC</title>
 
-    <!-- reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <!-- Google tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBYXETEMX1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K03L55LXKG"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'G-NBYXETEMX1');
+        gtag('config', 'G-K03L55LXKG');
     </script>
 </head>
 
 <body>
 
-    <!-- BUTTON (UNCHANGED FLOW) -->
     <button id="myButton" onclick="showCaptcha()">
         <strong style="color: #f0f1f3;">FREE BTC</strong>
     </button>
 
-    <!-- CAPTCHA (new but minimal impact) -->
     <div id="captchaBox" style="display:none; margin-top: 1rem;">
         <div class="g-recaptcha" data-sitekey="6Lca8LksAAAAAI6L6TUiCAJrzqNXrOsX42Y9BraH"
             data-callback="onCaptchaSuccess">
@@ -58,19 +60,16 @@
     <script>
         let statusInterval = null;
 
-        /* STEP 1: button click → show captcha */
         function showCaptcha() {
             document.getElementById("myButton").style.display = "none";
             document.getElementById("captchaBox").style.display = "block";
         }
 
-        /* STEP 2: captcha success */
         function onCaptchaSuccess() {
             document.getElementById("captchaBox").style.display = "none";
             showArticle();
         }
 
-        /* STEP 3: YOUR ORIGINAL CODE (UNCHANGED LOGIC) */
         function showArticle() {
 
             const messages = [
