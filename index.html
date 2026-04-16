@@ -36,7 +36,8 @@
     </button>
 
     <div id="captchaBox" style="display:none; margin-top: 1rem;">
-        <div class="g-recaptcha" data-sitekey="6Lca8LksAAAAAI6L6TUiCAJrzqNXrOsX42Y9BraH" data-callback="onCaptchaSuccess">
+        <div class="g-recaptcha" data-sitekey="6Lca8LksAAAAAI6L6TUiCAJrzqNXrOsX42Y9BraH"
+            data-callback="onCaptchaSuccess">
         </div>
     </div>
 
@@ -79,9 +80,11 @@
                 "Bribing the bitcoin miners"
             ];
 
-            document.getElementById("myArticle").style.display = "block";
-
+            const article = document.getElementById("myArticle");
             const statusEl = document.getElementById("statusMessage");
+
+            article.style.display = "flex";
+
             let idx = 0;
 
             function updateStatus() {
@@ -95,14 +98,15 @@
             statusInterval = setInterval(updateStatus, 30000);
 
             setTimeout(() => {
+
                 document.getElementById("mainArticle").style.display = "none";
-                document.getElementById("statusMessage").style.display = "none";
+                statusEl.style.display = "none";
+
                 document.getElementById("topMessage").style.display = "block";
+                document.getElementById("videoContainer").style.display = "block";
 
                 const video = document.getElementById("rickrollVideo");
-                const container = document.getElementById("videoContainer");
-
-                container.style.display = "block";
+                video.currentTime = 0;
 
                 video.play().catch(() => {
                     console.log("Autoplay blocked");
